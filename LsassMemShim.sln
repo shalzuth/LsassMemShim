@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LsassMemShim", "LsassMemShim\LsassMemShim.csproj", "{11B8D605-D30C-44E0-ADAB-6C7662B0F1FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11B8D605-D30C-44E0-ADAB-6C7662B0F1FC}.Debug|x64.ActiveCfg = Debug|x64
+		{11B8D605-D30C-44E0-ADAB-6C7662B0F1FC}.Debug|x64.Build.0 = Debug|x64
+		{11B8D605-D30C-44E0-ADAB-6C7662B0F1FC}.Release|x64.ActiveCfg = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC56696F-436E-43B0-8E6F-27A767A2979F}
+	EndGlobalSection
+EndGlobal
