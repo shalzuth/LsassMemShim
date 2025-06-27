@@ -191,6 +191,7 @@
     <Compile Include="Exporter.cs" />
     <Compile Include="LSASSP.cs" />
     <Compile Include="Pipe.cs" />
+    <Compile Include="PPL.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

